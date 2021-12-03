@@ -22,7 +22,6 @@ class TestFullCaseGittiGidiyor extends BaseTest {
                 .navigateToLogin()
                 .performSuccessfulLogin(EMAIL, PASSWORD)
                 .assertLoginStatus(true);
-        //assertion here?
     }
     @ParameterizedTest
     @CsvSource("Bardak,4")
@@ -71,7 +70,7 @@ class TestFullCaseGittiGidiyor extends BaseTest {
     @DisplayName("Open homepage in new tab")
     @Order(6)
     @Tag("Account")
-    void test_Tab_Switch_Logout() throws InterruptedException {
+    void test_Tab_Switch_Logout() {
         String handle = page.openNewTabAndGetHandle();
         page.logOut();
         page.assertLoginStatus(false);

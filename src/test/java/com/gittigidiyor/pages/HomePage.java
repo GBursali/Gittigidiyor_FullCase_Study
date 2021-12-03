@@ -17,6 +17,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "div[data-cy='header-user-menu']")
     public static WebElement buttonMyAccount;
 
+    public static final By selectorMyFavourites = By.cssSelector("a[title='Favorilerim']");
+    public static final By selectorLogOut = By.cssSelector("div[name='accountExit']");
+
     public HomePage(){
         PageFactory.initElements(driver,this);
         closePopupCookie();
@@ -29,14 +32,14 @@ public class HomePage extends BasePage {
     public FavouritesPage navigateToFavourites(){
         Actions actions = new Actions(driver);
         actions.moveToElement(buttonMyAccount).pause(2000).build().perform();
-        clickElement(driver.findElement(By.cssSelector("a[title='Favorilerim']")));
+        clickElement(selectorMyFavourites);
         return new FavouritesPage();
     }
     public HomePage logOut(){
         closePopupCookie();
         Actions actions = new Actions(driver);
         actions.moveToElement(buttonMyAccount).pause(2000).build().perform();
-        actions.click(waitForLoad(driver.findElement(By.cssSelector("div[name='accountExit']"))))
+        actions.click(waitForLoad(selectorLogOut))
                 .click().pause(1000).build().perform();
 
         return this;

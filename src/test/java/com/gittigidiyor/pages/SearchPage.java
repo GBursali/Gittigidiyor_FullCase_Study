@@ -51,19 +51,22 @@ public class SearchPage extends BasePage {
     }
     public SearchPage clickFavoriteRandomProducts(Integer count){
         Random rng = new Random();
-        List<WebElement> list = new ArrayList<>();
+        List<WebElement> selectedProducts = new ArrayList<>();
+        final int size = buttonsFavorite.toArray().length;
+
         for (int i = 1; i <= count; i++) {
-            int selectedIndex = rng.nextInt(buttonsFavorite.toArray().length);
+            int selectedIndex = rng.nextInt(size);
             WebElement product = buttonsFavorite.get(selectedIndex);
-            if(list.contains(product)){
+
+            if(selectedProducts.contains(product)){
                i--;
                continue;
             }
             try{
                 clickElement(product);
-                list.add(product);
+                selectedProducts.add(product);
 
-                buttonsFavorite.remove(selectedIndex);
+                //buttonsFavorite.remove(selectedIndex);
             }
             catch (ElementClickInterceptedException ecie){
                 i--;
@@ -88,7 +91,7 @@ public class SearchPage extends BasePage {
     }
 
     public void assertBasketNotEmpty(){
-        boolean basketHasProduct = !driver.findElements(selectorBasketCount).isEmpty();
+        boolean basketHasProduct = elementShownOnPageBySelector(selectorBasketCount);
         Assertions.assertTrue(basketHasProduct);
     }
 

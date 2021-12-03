@@ -21,7 +21,7 @@ public class BasketPage extends BasePage {
     public BasketPage increaseQuantity2(Integer index){
         By optionBy = By.cssSelector(String.format("option[value='%d']",index));
         waitForLoad(dropdownAmount).click();
-        clickElement(driver.findElement(optionBy));
+        clickElement(optionBy);
         return this;
     }
 
