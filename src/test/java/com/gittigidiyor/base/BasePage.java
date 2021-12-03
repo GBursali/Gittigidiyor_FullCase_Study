@@ -67,7 +67,7 @@ public class BasePage extends BaseTest {
     }
     public void assertLoginStatus(boolean shouldLogged){
         try{
-            String username = waitForLoad(driver.findElement(selectorAccountUsername)).getText();//Log
+            String username = waitForLoad(selectorAccountUsername).getText();//Log
             TimeUnit.SECONDS.sleep(3);
             boolean loginStatus = !username.equals("veya Üye Ol");
             Assertions.assertEquals(shouldLogged,loginStatus);
