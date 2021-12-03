@@ -27,7 +27,7 @@ public abstract class BaseTest {
     static void setupTest(){
         File f = new File("src/test/resources/chromedriver.exe");
         DOMConfigurator.configure("./log4jconfig.xml");
-        log.info("%n Test flow started");
+        log.info("-----Test flow started-------");
         System.setProperty("webdriver.chrome.driver", f.getAbsolutePath());
         driverOptions = new ChromeOptions();
         driverOptions.addArguments("start-maximized",

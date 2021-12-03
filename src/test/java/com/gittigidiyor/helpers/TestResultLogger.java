@@ -27,6 +27,7 @@ public class TestResultLogger implements TestWatcher, AfterAllCallback {
         log.info(String.format("Test result summary for %s %s",
                 extensionContext.getDisplayName(),
                 summary.toString()));
+        log.info("-----------------------");//done
     }
 
     @Override
@@ -46,7 +47,7 @@ public class TestResultLogger implements TestWatcher, AfterAllCallback {
 
     @Override
     public void testAborted(ExtensionContext context, Throwable cause) {
-        log.info(String.format("%s test aborted wit %s: ",
+        log.info(String.format("%s test aborted with %s: ",
                 context.getDisplayName(),
                 cause.getMessage()));
 
