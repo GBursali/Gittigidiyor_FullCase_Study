@@ -46,23 +46,6 @@ public abstract class BaseTest {
     public BaseTest(){
         PageFactory.initElements(driver,this);
     }
-    public static Boolean checkCaptchaExists(){
-        Boolean pageHasCaptcha = !driver.findElements(By.id("recaptcha-anchor-label")).isEmpty();
-        Boolean pageHasLoading = !driver.findElements(By.cssSelector(".loading.recaptcha-loading")).isEmpty();
-        return pageHasCaptcha || pageHasLoading;
-        /*
-        try{
-            driver.findElement(By.id("recaptcha-anchor-label")).getAccessibleName();
-            return true;
-        }
-        catch (NoSuchElementException nsee){
-            try{
-                driver.findElement(By.cssSelector(".loading.recaptcha-loading")).getAccessibleName();
-                return true;
-            }
-            catch(NoSuchElementException nsee2){return false;}
-        }*/
-    }
 
     @AfterAll
     static void killDriver(){

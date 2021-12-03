@@ -1,43 +1,24 @@
 package com.gittigidiyor.base;
 
 import com.gittigidiyor.pages.BasketPage;
-import com.gittigidiyor.pages.HomePage;
 import com.gittigidiyor.pages.SearchPage;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.concurrent.TimeUnit;
 
 public class BasePage extends BaseTest {
-    @FindBy(css = "a[title='GittiGidiyor']")
-    public static WebElement buttonLogoHomepage;
-
     @FindBy(css = "[href='https://www.gittigidiyor.com/sepetim']")
     public static WebElement buttonGoToBasket;
 
     public static final By selectorAccountUsername = By.cssSelector("div.gekhq4-4.egoSnI span");
     public static final By selectorCookiePopupClose = By.cssSelector("section.tyj39b-4.jZoSqD");
+
     public void closePopupCookie(){
-        if(!driver.findElements(selectorCookiePopupClose).isEmpty())
+        if(elementShownOnPageBySelector(selectorCookiePopupClose))
             driver.findElement(selectorCookiePopupClose).click();
-        /*
-        try{
-            clickElement(driver.findElement(selectorCookiePopupClose));
-        }
-        catch (NoSuchElementException nsee){
-            log.info("Çerez penceresi bulunamadı. Devam ediliyor....");
-            //nvm that error and continue
-        }*/
-    }
-    public HomePage navigateToHomepage(){
-        clickElement(buttonLogoHomepage);
-        closePopupCookie();
-        return new HomePage();
     }
     public WebElement waitForLoad(WebElement element) {
         if(checkCaptchaExists()){
@@ -46,8 +27,13 @@ public class BasePage extends BaseTest {
         return waiter.until(ExpectedConditions.visibilityOf(element));
     }
     public void clickElement(WebElement element) {
-        waiter.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
+        try{
+            waiter.until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+        }catch (TimeoutException te){
+            ((JavascriptExecutor)driver).executeScript("arguments[0].click();",element);
+        }
+
     }
 
     public SearchPage focusOnSearchBox(){
@@ -71,8 +57,8 @@ public class BasePage extends BaseTest {
     public void assertLoginStatus(boolean shouldLogged){
         try{
             String username = waitForLoad(driver.findElement(selectorAccountUsername)).getText();//Log
-            TimeUnit.SECONDS.sleep(2);
-            boolean loginStatus = username.equals("veya Üye Ol");
+            TimeUnit.SECONDS.sleep(3);
+            boolean loginStatus = !username.equals("veya Üye Ol");
             Assertions.assertEquals(shouldLogged,loginStatus);
             System.out.println(username);
         }
@@ -81,8 +67,13 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public boolean elementShownOnPageBySelector(By selector){
+    public static boolean elementShownOnPageBySelector(By selector){
         return !driver.findElements(selector).isEmpty();
     }
 
+    public static Boolean checkCaptchaExists(){
+        Boolean pageHasCaptcha = elementShownOnPageBySelector(By.id("recaptcha-anchor-label"));
+        Boolean pageHasLoading = elementShownOnPageBySelector(By.cssSelector(".loading.recaptcha-loading"));
+        return pageHasCaptcha || pageHasLoading;
+    }
 }

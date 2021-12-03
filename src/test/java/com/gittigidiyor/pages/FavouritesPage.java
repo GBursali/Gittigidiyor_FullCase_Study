@@ -29,7 +29,7 @@ public class FavouritesPage extends BasePage {
     }
 
     public void assertProductRemoved(){
-        boolean shownProductRemovedInfo = !driver.findElements(selectorProductRemoved).isEmpty();
+        boolean shownProductRemovedInfo = elementShownOnPageBySelector(selectorProductRemoved);
         Assertions.assertTrue(shownProductRemovedInfo);
     }
 }

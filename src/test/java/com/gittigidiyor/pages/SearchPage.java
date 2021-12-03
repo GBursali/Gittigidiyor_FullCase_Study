@@ -88,7 +88,7 @@ public class SearchPage extends BasePage {
     }
 
     public void assertBasketNotEmpty(){
-        boolean basketHasProduct = !driver.findElements(selectorBasketCount).isEmpty();
+        boolean basketHasProduct = elementShownOnPageBySelector(selectorBasketCount);
         Assertions.assertTrue(basketHasProduct);
     }
 
