@@ -65,8 +65,6 @@ public class SearchPage extends BasePage {
             try{
                 clickElement(product);
                 selectedProducts.add(product);
-
-                //buttonsFavorite.remove(selectedIndex);
             }
             catch (ElementClickInterceptedException ecie){
                 i--;

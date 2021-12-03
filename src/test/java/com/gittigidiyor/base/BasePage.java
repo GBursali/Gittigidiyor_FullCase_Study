@@ -14,8 +14,10 @@ public class BasePage extends BaseTest {
     @FindBy(css = "[href='https://www.gittigidiyor.com/sepetim']")
     public static WebElement buttonGoToBasket;
 
-    public static final By selectorAccountUsername = By.cssSelector("div.gekhq4-4.egoSnI span");
-    public static final By selectorCookiePopupClose = By.cssSelector("section.tyj39b-4.jZoSqD");
+    private static final By selectorAccountUsername = By.cssSelector("div.gekhq4-4.egoSnI span");
+    private static final By selectorCookiePopupClose = By.cssSelector("section.tyj39b-4.jZoSqD");
+    private static final By selectorCaptchaBox = By.id("recaptcha-anchor-label");
+    private static final By selectorCaptchaLoading = By.cssSelector(".loading.recaptcha-loading");
 
     public void closePopupCookie(){
         if(elementShownOnPageBySelector(selectorCookiePopupClose))
@@ -63,7 +65,7 @@ public class BasePage extends BaseTest {
             Assertions.assertEquals(shouldLogged,loginStatus,"Logged out");
         }
         catch (NoSuchElementException | InterruptedException nsee){
-            Assertions.fail("Giriş yapılamadı/kullanıcı adı bulunamadı");
+            Assertions.fail("Couldn't logged in/ Username not found in display");
         }
     }
 
@@ -72,8 +74,8 @@ public class BasePage extends BaseTest {
     }
 
     public static Boolean checkCaptchaExists(){
-        Boolean pageHasCaptcha = elementShownOnPageBySelector(By.id("recaptcha-anchor-label"));
-        Boolean pageHasLoading = elementShownOnPageBySelector(By.cssSelector(".loading.recaptcha-loading"));
+        Boolean pageHasCaptcha = elementShownOnPageBySelector(selectorCaptchaBox);
+        Boolean pageHasLoading = elementShownOnPageBySelector(selectorCaptchaLoading);
         return pageHasCaptcha || pageHasLoading;
     }
 }
