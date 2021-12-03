@@ -3,13 +3,11 @@ package com.gittigidiyor.tests;
 import com.gittigidiyor.base.BaseTest;
 import com.gittigidiyor.helpers.TestResultLogger;
 import com.gittigidiyor.pages.HomePage;
-import org.apache.log4j.Logger;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
