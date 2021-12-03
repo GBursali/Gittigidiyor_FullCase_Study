@@ -27,7 +27,7 @@ public abstract class BaseTest {
     static void setupTest(){
         File f = new File("src/test/resources/chromedriver.exe");
         DOMConfigurator.configure("./log4jconfig.xml");
-        log.info("Test flow started");
+        log.info("%n Test flow started");
         System.setProperty("webdriver.chrome.driver", f.getAbsolutePath());
         driverOptions = new ChromeOptions();
         driverOptions.addArguments("start-maximized",
@@ -36,7 +36,6 @@ public abstract class BaseTest {
                 "--disable-notifications");
         driver = new ChromeDriver(driverOptions);
         waiter = new WebDriverWait(driver, Duration.ofSeconds(20));
-
 
     }
     @BeforeEach

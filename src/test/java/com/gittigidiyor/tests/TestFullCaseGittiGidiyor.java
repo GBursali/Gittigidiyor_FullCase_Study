@@ -9,6 +9,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(TestResultLogger.class)
 class TestFullCaseGittiGidiyor extends BaseTest {
@@ -82,11 +85,14 @@ class TestFullCaseGittiGidiyor extends BaseTest {
     @DisplayName("Open homepage in new tab")
     @Order(6)
     @Tag("Account")
-    void test_Tab_Switch_Logout() {
-        String handle = page.openNewTabAndGetHandle();
-        page.logOut();
-        page.assertLoginStatus(false);
-        page.closeTab(handle);
+    void test_Tab_Switch_Logout() throws InterruptedException {
+        page.focusOnTab()
+                .openNewTab()
+                .focusOnPage()
+                .logOut()
+                .assertLoginStatus(false);
+        page.focusOnTab().closeTab();
+        TimeUnit.SECONDS.sleep(2);
     }
 
 }

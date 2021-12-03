@@ -46,7 +46,7 @@ public class TestResultLogger implements TestWatcher, AfterAllCallback {
 
     @Override
     public void testAborted(ExtensionContext context, Throwable cause) {
-        log.info(String.format("%s test aborted with %s: ",
+        log.info(String.format("%s test aborted wit %s: ",
                 context.getDisplayName(),
                 cause.getMessage()));
 

@@ -2,6 +2,7 @@ package com.gittigidiyor.base;
 
 import com.gittigidiyor.pages.BasketPage;
 import com.gittigidiyor.pages.SearchPage;
+import com.gittigidiyor.pages.TabPage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
@@ -51,24 +52,15 @@ public class BasePage extends BaseTest {
         clickElement(buttonGoToBasket);
         return new BasketPage();
     }
-    public String openNewTabAndGetHandle(){
-        String handleid = driver.getWindowHandle();
-        String a = "window.open('https://www.gittigidiyor.com/','_blank');";
-        ((JavascriptExecutor)driver).executeScript(a);
-        String newHandleid = driver.getWindowHandle();
-        driver.switchTo().window(handleid);
-        return newHandleid;
-    }
-    public void closeTab(String handle){
-        driver.switchTo().window(handle).close();
+    public TabPage focusOnTab(){
+        return new TabPage();
     }
     public void assertLoginStatus(boolean shouldLogged){
         try{
             String username = waitForLoad(selectorAccountUsername).getText();//Log
             TimeUnit.SECONDS.sleep(3);
             boolean loginStatus = !username.equals("veya Üye Ol");
-            Assertions.assertEquals(shouldLogged,loginStatus);
-            System.out.println(username);
+            Assertions.assertEquals(shouldLogged,loginStatus,"Logged out");
         }
         catch (NoSuchElementException | InterruptedException nsee){
             Assertions.fail("Giriş yapılamadı/kullanıcı adı bulunamadı");
