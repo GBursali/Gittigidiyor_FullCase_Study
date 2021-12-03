@@ -40,7 +40,7 @@ public class HomePage extends BasePage {
         Actions actions = new Actions(driver);
         actions.moveToElement(buttonMyAccount).pause(2000).build().perform();
         actions.click(waitForLoad(selectorLogOut))
-                .click().pause(1000).build().perform();
+                .click().pause(2000).build().perform();
 
         return this;
     }

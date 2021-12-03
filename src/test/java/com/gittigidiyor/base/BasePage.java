@@ -21,15 +21,11 @@ public class BasePage extends BaseTest {
             driver.findElement(selectorCookiePopupClose).click();
     }
     public WebElement waitForLoad(WebElement element) {
-        if(checkCaptchaExists()){
-            log.warn("Captcha bulundu. Kullanıcı bekleniyor...");
-        }
+
         return waiter.until(ExpectedConditions.visibilityOf(element));
     }
     public WebElement waitForLoad(By selector) {
-        if(checkCaptchaExists()){
-            log.warn("Captcha bulundu. Kullanıcı bekleniyor...");
-        }
+
         return waiter.until(ExpectedConditions.visibilityOfElementLocated(selector));
     }
     public void clickElement(WebElement element) {
@@ -67,7 +63,7 @@ public class BasePage extends BaseTest {
     }
     public void assertLoginStatus(boolean shouldLogged){
         try{
-            String username = waitForLoad(driver.findElement(selectorAccountUsername)).getText();//Log
+            String username = waitForLoad(selectorAccountUsername).getText();//Log
             TimeUnit.SECONDS.sleep(3);
             boolean loginStatus = !username.equals("veya Üye Ol");
             Assertions.assertEquals(shouldLogged,loginStatus);
