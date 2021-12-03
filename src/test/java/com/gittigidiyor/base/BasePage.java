@@ -32,8 +32,6 @@ public class BasePage extends BaseTest {
 
         try{
             waiter.until(ExpectedConditions.elementToBeClickable(element));
-            log.info(String.format("cy(%s) '%s' clicked.",element.getAttribute("data-cy"),
-                    element.getText()));
             element.click();
         }catch (TimeoutException te){
             ((JavascriptExecutor)driver).executeScript("arguments[0].click();",element);

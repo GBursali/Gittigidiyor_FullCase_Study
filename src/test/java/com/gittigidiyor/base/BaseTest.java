@@ -53,6 +53,5 @@ public abstract class BaseTest {
     @AfterAll
     static void killDriver(){
         driver.quit();
-        log.info("Test flow finished");
     }
 }

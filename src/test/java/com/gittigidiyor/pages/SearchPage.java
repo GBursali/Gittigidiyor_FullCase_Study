@@ -87,12 +87,12 @@ public class SearchPage extends BasePage {
 
     public void assertFavoriteCount(int count){
         int favoriteCount = driver.findElements(selectorFavorited).size();
-        Assertions.assertEquals(count,favoriteCount);
+        Assertions.assertEquals(count,favoriteCount,"You already had favourites or some of them are not signed.");
     }
 
     public void assertBasketNotEmpty(){
         boolean basketHasProduct = elementShownOnPageBySelector(selectorBasketCount);
-        Assertions.assertTrue(basketHasProduct);
+        Assertions.assertTrue(basketHasProduct,"Adding product to the basket failed. Basket is empty.");
     }
 
 

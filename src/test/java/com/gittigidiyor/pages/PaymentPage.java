@@ -28,7 +28,7 @@ public class PaymentPage extends BasePage {
         return this;
     }
     public PaymentPage assertErrorsExist(){
-        Assertions.assertTrue(labelError.isDisplayed());
+        Assertions.assertTrue(labelError.isDisplayed(),"Verilmesi gereken hatalar bulunamadı!!");
         return this;
     }
 

@@ -1,12 +1,16 @@
 package com.gittigidiyor.tests;
 
 import com.gittigidiyor.base.BaseTest;
+import com.gittigidiyor.helpers.TestResultLogger;
 import com.gittigidiyor.pages.HomePage;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@ExtendWith(TestResultLogger.class)
 class TestFullCaseGittiGidiyor extends BaseTest {
 
     public static final String EMAIL = "requ07@hotmail.com";
@@ -29,12 +33,14 @@ class TestFullCaseGittiGidiyor extends BaseTest {
     @DisplayName("Search on product and add favorites")
     @Order(2)
     void testSearchOnRandomProduct(String query,int count){
+
         page.focusOnSearchBox()
                 .performSearch(query)
                 .scrollToBottom()
                 .clickFavoriteRandomProducts(count)
                 .assertFavoriteCount(count);
         log.info("Favourite successful");
+
     }
     @ParameterizedTest
     @CsvSource("Çanta,7")

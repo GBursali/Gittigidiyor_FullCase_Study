@@ -30,6 +30,6 @@ public class FavouritesPage extends BasePage {
 
     public void assertProductRemoved(){
         boolean shownProductRemovedInfo = elementShownOnPageBySelector(selectorProductRemoved);
-        Assertions.assertTrue(shownProductRemovedInfo);
+        Assertions.assertTrue(shownProductRemovedInfo,"'Product removed' section is not visible!");
     }
 }
