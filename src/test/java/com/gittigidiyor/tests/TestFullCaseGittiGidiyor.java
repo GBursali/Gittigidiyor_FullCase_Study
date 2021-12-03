@@ -22,6 +22,7 @@ class TestFullCaseGittiGidiyor extends BaseTest {
                 .navigateToLogin()
                 .performSuccessfulLogin(EMAIL, PASSWORD)
                 .assertLoginStatus(true);
+        log.info("Login successful");
     }
     @ParameterizedTest
     @CsvSource("Bardak,4")
@@ -33,6 +34,7 @@ class TestFullCaseGittiGidiyor extends BaseTest {
                 .scrollToBottom()
                 .clickFavoriteRandomProducts(count)
                 .assertFavoriteCount(count);
+        log.info("Favourite successful");
     }
     @ParameterizedTest
     @CsvSource("Çanta,7")
@@ -43,6 +45,7 @@ class TestFullCaseGittiGidiyor extends BaseTest {
                 .performSearch(query)
                 .addToBasket(index)
                 .assertBasketNotEmpty();
+        log.info("Basket has products");
     }
     @ParameterizedTest
     @CsvSource("2,2")
@@ -56,6 +59,7 @@ class TestFullCaseGittiGidiyor extends BaseTest {
                 .assertErrorsExist()
                 .clickEditBasket()
                 .addProductFromFavorites(addIndex);
+        log.info("Payment: Errors really exists");
     }
     @Test
     @DisplayName("nav->favorites and remove 3rd product ")
@@ -65,6 +69,8 @@ class TestFullCaseGittiGidiyor extends BaseTest {
                 .selectSecondFavourite()
                 .clickDeleteFavourite()
         .assertProductRemoved();
+        log.info("Favourite product successfully removed");
+
     }
     @Test
     @DisplayName("Open homepage in new tab")

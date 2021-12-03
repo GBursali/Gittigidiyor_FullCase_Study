@@ -1,0 +1,24 @@
+2021-12-03 13:32:36,826 INFO --->Test flow started 
+2021-12-03 13:33:17,004 INFO --->cy(header-user-menu) 'Giriş Yap
+veya Üye Ol' clicked. 
+2021-12-03 13:33:17,721 INFO --->cy(header-login-button) 'Giriş Yap' clicked. 
+2021-12-03 13:33:19,488 INFO --->cy(null) '' clicked. 
+2021-12-03 13:33:34,158 INFO --->Login successful 
+2021-12-03 13:33:34,520 INFO --->cy(search-find-button) 'BUL' clicked. 
+2021-12-03 13:33:53,056 INFO --->cy(product-favorite) '' clicked. 
+2021-12-03 13:33:54,296 INFO --->cy(product-favorite) '' clicked. 
+2021-12-03 13:33:55,092 INFO --->cy(product-favorite) '' clicked. 
+2021-12-03 13:33:56,230 INFO --->cy(product-favorite) '' clicked. 
+2021-12-03 13:34:10,337 INFO --->cy(search-find-button) 'BUL' clicked. 
+2021-12-03 13:34:29,266 INFO --->cy(null) 'Sepete Ekle' clicked. 
+2021-12-03 13:34:30,509 INFO --->Basket has products 
+2021-12-03 13:34:43,615 INFO --->cy(null) '8
+Sepetim' clicked. 
+2021-12-03 13:35:00,891 INFO --->cy(null) '2' clicked. 
+2021-12-03 13:35:01,974 INFO --->cy(null) '' clicked. 
+2021-12-03 13:35:08,076 INFO --->cy(null) 'Kaydet' clicked. 
+2021-12-03 13:35:55,162 INFO --->Payment: Errors really exists 
+2021-12-03 13:36:21,965 INFO --->cy(null) 'Favorilerim' clicked. 
+2021-12-03 13:36:25,252 INFO --->cy(null) '' clicked. 
+2021-12-03 13:36:26,023 INFO --->cy(null) '' clicked. 
+2021-12-03 13:36:28,451 INFO --->Favourite product successfully removed 

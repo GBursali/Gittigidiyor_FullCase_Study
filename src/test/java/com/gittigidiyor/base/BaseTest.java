@@ -3,6 +3,7 @@ package com.gittigidiyor.base;
 import com.gittigidiyor.pages.HomePage;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +26,8 @@ public abstract class BaseTest {
     @BeforeAll
     static void setupTest(){
         File f = new File("src/test/resources/chromedriver.exe");
+        DOMConfigurator.configure("./log4jconfig.xml");
+        log.info("Test flow started");
         System.setProperty("webdriver.chrome.driver", f.getAbsolutePath());
         driverOptions = new ChromeOptions();
         driverOptions.addArguments("start-maximized",
@@ -34,12 +37,12 @@ public abstract class BaseTest {
         driver = new ChromeDriver(driverOptions);
         waiter = new WebDriverWait(driver, Duration.ofSeconds(20));
 
+
     }
     @BeforeEach
     void baseURL(){
         if (!driver.getCurrentUrl().equalsIgnoreCase("https://www.gittigidiyor.com/")){
             driver.get("https://www.gittigidiyor.com/");
-
         }
     }
 
@@ -50,5 +53,6 @@ public abstract class BaseTest {
     @AfterAll
     static void killDriver(){
         driver.quit();
+        log.info("Test flow finished");
     }
 }

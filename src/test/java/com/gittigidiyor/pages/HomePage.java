@@ -18,7 +18,7 @@ public class HomePage extends BasePage {
     public static WebElement buttonMyAccount;
 
     public static final By selectorMyFavourites = By.cssSelector("a[title='Favorilerim']");
-    public static final By selectorLogOut = By.cssSelector("div[name='accountExit']");
+    public static final By selectorLogOut = By.cssSelector("a[title='Çıkış']");
 
     public HomePage(){
         PageFactory.initElements(driver,this);
@@ -31,7 +31,7 @@ public class HomePage extends BasePage {
     }
     public FavouritesPage navigateToFavourites(){
         Actions actions = new Actions(driver);
-        actions.moveToElement(buttonMyAccount).pause(2000).build().perform();
+        actions.moveToElement(waitForLoad(buttonMyAccount)).pause(2000).build().perform();
         clickElement(selectorMyFavourites);
         return new FavouritesPage();
     }
