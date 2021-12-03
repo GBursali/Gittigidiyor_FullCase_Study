@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(TestResultLogger.class)
-class TestFullCaseGittiGidiyor extends BaseTest {
+class TestGittiGidiyor extends BaseTest {
 
     public static final String EMAIL = "requ07@hotmail.com";
     public static final String PASSWORD = "9rM7tpMsBV4hsRw";
