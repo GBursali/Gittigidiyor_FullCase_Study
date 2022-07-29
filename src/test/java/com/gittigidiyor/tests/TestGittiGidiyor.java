@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 class TestGittiGidiyor extends BaseTest {
 
     public static final String EMAIL = "requ07@hotmail.com";
-    public static final String PASSWORD = "9rM7tpMsBV4hsRw";
+    public static final String PASSWORD = "";
     public static HomePage page = new HomePage();
 
     @Test
